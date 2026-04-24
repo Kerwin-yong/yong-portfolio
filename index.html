@@ -1,167 +1,167 @@
 <!DOCTYPE html>
-<html lang="zh">
-<head>
+<html lang="en"> <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UI/UX Portfolio</title>
     <style>
         :root {
-    --primary: #0071e3;
-    --bg: #f5f5f7;
-    --text: #1d1d1f;
-    --card-shadow: 0 8px 30px rgba(0,0,0,0.04);
-    --card-hover: 0 15px 45px rgba(0,0,0,0.1);
-}
+            --primary: #0071e3;
+            --bg: #f5f5f7;
+            --text: #1d1d1f;
+            --card-shadow: 0 8px 30px rgba(0,0,0,0.04);
+            --card-hover: 0 15px 45px rgba(0,0,0,0.1);
+        }
 
-body {
-    /* 核心：背景图设置 */
-    background: url('bg.jpg') no-repeat center center fixed; 
-    background-size: cover; /* 确保图片覆盖整个屏幕且不拉伸 */
-    
-    font-family: 'SF Pro Display', -apple-system, sans-serif;
-    margin: 0;
-    padding: 60px 20px;
-    min-height: 100vh;
-    color: var(--text);
-}
+        body {
+            background: url('bg.jpg') no-repeat center center fixed; 
+            background-size: cover; 
+            font-family: 'SF Pro Display', -apple-system, sans-serif;
+            margin: 0;
+            padding: 80px 20px; /* 增加上下留白 */
+            min-height: 100vh;
+            color: var(--text);
+            line-height: 1.5;
+        }
 
-/* 为了让文字在背景图上更清晰，给 container 加一个微弱的半透明层（可选） */
-.container {
-    max-width: 1100px;
-    margin: 0 auto;
-    background: rgba(255, 255, 255, 0.2); /* 淡淡的白色遮罩 */
-    padding: 40px;
-    border-radius: 40px;
-    backdrop-filter: blur(10px); /* 让背景图产生毛玻璃效果，提升高级感 */
-    -webkit-backdrop-filter: blur(10px);
-}
+        .container {
+            max-width: 1200px; /* 稍微放宽容器 */
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.2); 
+            padding: 60px; /* 增加内部大间距 */
+            border-radius: 40px;
+            backdrop-filter: blur(15px); 
+            -webkit-backdrop-filter: blur(15px);
+        }
 
-.container { max-width: 1100px; margin: 0 auto; }
+        /* 语言切换按钮 - 调大尺寸 */
+        .lang-switch { 
+            text-align: right; 
+            margin-bottom: 60px; /* 增加与标题的间距 */
+        }
+        .lang-switch button {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0,0,0,0.1);
+            padding: 12px 28px; /* 增大按钮尺寸 */
+            font-size: 16px;    /* 增大字体 */
+            cursor: pointer;
+            border-radius: 30px;
+            margin-left: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .lang-switch button:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 113, 227, 0.3);
+        }
 
-/* 语言切换按钮 - 更加灵动 */
-.lang-switch { text-align: right; margin-bottom: 40px; }
-.lang-switch button {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(10px); /* 磨砂玻璃效果 */
-    border: 1px solid rgba(0,0,0,0.1);
-    padding: 8px 20px;
-    cursor: pointer;
-    border-radius: 25px;
-    margin-left: 8px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    font-weight: 500;
-}
-.lang-switch button:hover {
-    background: var(--primary);
-    color: white;
-    transform: scale(1.05);
-}
+        header h1 {
+            font-size: 52px; /* 稍微加大标题 */
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            margin-bottom: 80px; /* 增加标题和作品集的间距 */
+            text-align: center;
+            background: linear-gradient(90deg, #1d1d1f, #434343);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-header h1 {
-    font-size: 48px;
-    font-weight: 700;
-    letter-spacing: -1px;
-    margin-bottom: 60px;
-    text-align: center;
-    background: linear-gradient(90deg, #1d1d1f, #434343);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
+        /* 网格布局 - 增加卡片之间的间距 */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 50px; /* 增加卡片间距，不显得挤 */
+        }
 
-/* 网格布局 */
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 40px;
-}
+        .card {
+            background: rgba(255, 255, 255, 0.7); 
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4); 
+            border-radius: 30px; /* 更圆润 */
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
 
-/* 基础卡片样式 */
-.card {
-    background: rgba(255, 255, 255, 0.7); /* 半透明白 */
-    backdrop-filter: blur(20px); /* 模糊核心！ */
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.4); /* 亮边线 */
-    border-radius: 24px;
-    /* 保持之前的 shadow 和 transition */
-}
+        .card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--card-hover);
+        }
 
-.card:hover {
-    transform: translateY(-12px);
-    box-shadow: var(--card-hover);
-}
+        .card img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
 
-.card img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    transition: transform 0.6s ease;
-}
+        .content { 
+            padding: 35px; /* 增加文字区域的内边距 */
+        }
+        
+        h2 { 
+            margin: 0 0 18px; 
+            font-size: 24px; 
+            font-weight: 600; 
+            line-height: 1.3;
+        }
 
-.card:hover img {
-    transform: scale(1.05); /* 悬停图片微放大的动效 */
-}
+        p { 
+            color: #6e6e73; 
+            font-size: 16px; 
+            line-height: 1.8; /* 增加行高，阅读更舒适 */
+            margin-bottom: 30px; 
+            height: auto; /* 取消固定高度，让内容根据间距自然伸展 */
+            min-height: 60px;
+        }
 
-/* --- 特殊处理：AVIA 黑色背景卡片 --- */
-.card.dark-theme {
-    background: #121212; /* 深色底 */
-    color: #ffffff;
-    border: 1px solid #333;
-}
-
-.card.dark-theme p {
-    color: #a1a1a6;
-}
-
-.card.dark-theme .btn-v {
-    background: #2a2a2a;
-    color: white;
-    border: 1px solid #444;
-}
-/* ---------------------------------- */
-
-.content { padding: 30px; }
-h2 { margin: 0 0 12px; font-size: 22px; font-weight: 600; }
-p { color: #6e6e73; font-size: 15px; line-height: 1.6; margin-bottom: 24px; height: 48px; }
-
-.btn-group { display: flex; flex-wrap: wrap; gap: 10px; }
-.btn {
-    display: inline-block;
-    padding: 10px 18px;
-    background: var(--primary);
-    color: white;
-    text-decoration: none;
-    border-radius: 12px;
-    font-size: 14px;
-    font-weight: 500;
-    transition: 0.2s;
-}
-.btn:hover { opacity: 0.9; }
-.btn-v {
-    background: rgba(0,0,0,0.05);
-    color: var(--text);
-    border: 1px solid rgba(0,0,0,0.1);
-}
+        .btn-group { display: flex; flex-wrap: wrap; gap: 15px; } /* 增加按钮之间的空隙 */
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 22px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 14px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        
+        .btn-v {
+            background: rgba(0,0,0,0.06);
+            color: var(--text);
+            border: 1px solid rgba(0,0,0,0.08);
+        }
+        
+        .btn:hover { 
+            filter: brightness(1.1);
+            transform: scale(1.02);
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <div class="lang-switch">
-        <button onclick="changeLang('zh')">中文</button>
         <button onclick="changeLang('en')">English</button>
+        <button onclick="changeLang('zh')">中文</button>
     </div>
 
     <header>
-        <h1 class="lang" data-zh="KERWIN YONG UI/UX 设计作品集" data-en="KERWIN YONG UI/UX Design Portfolio">UI/UX 设计作品集</h1>
+        <h1 class="lang" data-zh="KERWIN YONG UI/UX 设计作品集" data-en="KERWIN YONG UI/UX Design Portfolio">UI/UX Design Portfolio</h1>
     </header>
 
     <div class="portfolio-grid">
-        
         <div class="card">
-            <img src="covers/a.jpg" alt="天方御叶">
+            <img src="covers/a.jpg" alt="Tian Fang Yu Ye">
             <div class="content">
-                <h2 class="lang" data-zh="天方御叶 - 奶茶应用设计页面" data-en="Tian Fang Yu Ye - Bubble Tea Application design">天方御叶 - 应用</h2>
-                <p class="lang" data-zh="包含从 V1 到 V3 的完整视觉演变过程。" data-en="Complete visual evolution from V1 to V3.">包含从 V1 到 V3 的完整视觉演变过程。</p>
+                <h2 class="lang" data-zh="天方御叶 - 奶茶应用设计页面" data-en="Tian Fang Yu Ye - Bubble Tea App Design">Tian Fang Yu Ye - App Design</h2>
+                <p class="lang" data-zh="包含从 V1 到 V3 的完整视觉演变过程。" data-en="Complete visual evolution from V1 to V3 showcasing design iterations.">Complete visual evolution from V1 to V3 showcasing design iterations.</p>
                 <div class="btn-group">
                     <a href="project-A/tianfang-v1.pdf" target="_blank" class="btn btn-v">V1</a>
                     <a href="project-A/tianfang-v2.pdf" target="_blank" class="btn btn-v">V2</a>
@@ -171,10 +171,10 @@ p { color: #6e6e73; font-size: 15px; line-height: 1.6; margin-bottom: 24px; heig
         </div>
 
         <div class="card">
-            <img src="covers/b.jpg" alt="森通">
+            <img src="covers/b.jpg" alt="Sentalk">
             <div class="content">
-                <h2 class="lang" data-zh="森通 - 聊天界面设计" data-en="Aosen - Chat Interface Design">奥森 - 聊天界面设计</h2>
-                <p class="lang" data-zh="项目迭代展示，侧重于用户体验优化。" data-en="Project iterations focusing on UX optimization.">项目迭代展示，侧重于用户体验优化。</p>
+                <h2 class="lang" data-zh="森通 - 聊天界面设计" data-en="Sentalk - Chat Interface Design">Sentalk - Chat Interface Design</h2>
+                <p class="lang" data-zh="项目迭代展示，侧重于用户体验优化。" data-en="Project iterations focusing on UX optimization and user flow.">Project iterations focusing on UX optimization and user flow.</p>
                 <div class="btn-group">
                     <a href="project-B/aosen-v1.pdf" target="_blank" class="btn btn-v">V1</a>
                     <a href="project-B/aosen-v2.pdf" target="_blank" class="btn btn-v">V2</a>
@@ -183,21 +183,21 @@ p { color: #6e6e73; font-size: 15px; line-height: 1.6; margin-bottom: 24px; heig
         </div>
 
         <div class="card">
-    <img src="covers/c.jpg" alt="AVIA">
-    <div class="content">
-        <h2 class="lang" data-zh="AVIA 项目" data-en="AVIA Project">AVIA 项目</h2>
-        <p class="lang" data-zh="专注于高转化率的单页设计，涵盖响应式布局与极简交互。" data-en="High-conversion responsive design with minimalist interactions.">核心产品设计稿。</p>
-        <div class="btn-group">
-            <a href="project-C/avia.pdf" target="_blank" class="btn">View PDF</a>
+            <img src="covers/c.jpg" alt="AVIA">
+            <div class="content">
+                <h2 class="lang" data-zh="AVIA 项目" data-en="AVIA Project">AVIA Project</h2>
+                <p class="lang" data-zh="专注于高转化率的单页设计，涵盖响应式布局与极简交互。" data-en="High-conversion responsive design with minimalist interactions.">High-conversion responsive design with minimalist interactions.</p>
+                <div class="btn-group">
+                    <a href="project-C/avia.pdf" target="_blank" class="btn">View PDF</a>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 
         <div class="card">
-            <img src="covers/d.jpg" alt="聊天软件">
+            <img src="covers/d.jpg" alt="Chat App">
             <div class="content">
-                <h2 class="lang" data-zh="聊天软件 UI 设计" data-en="Chat App UI Design">聊天软件 UI 设计</h2>
-                <p class="lang" data-zh="即时通讯工具的社交界面探索。" data-en="Social interface exploration for IM tools.">即时通讯工具的社交界面探索。</p>
+                <h2 class="lang" data-zh="聊天软件 UI 设计" data-en="Chat App UI Design">Chat App UI Design</h2>
+                <p class="lang" data-zh="即时通讯工具的社交界面探索。" data-en="Social interface exploration for IM tools and mobile interactions.">Social interface exploration for IM tools and mobile interactions.</p>
                 <div class="btn-group">
                     <a href="project-D/chat-app.pdf" target="_blank" class="btn">View PDF</a>
                 </div>
@@ -207,29 +207,28 @@ p { color: #6e6e73; font-size: 15px; line-height: 1.6; margin-bottom: 24px; heig
         <div class="card">
             <img src="covers/e.jpg" alt="Ethereum">
             <div class="content">
-                <h2 class="lang" data-zh="Ethereum 相关设计" data-en="Ethereum Related Design">Ethereum 相关设计</h2>
-                <p class="lang" data-zh="专注于数字资产的实时监控与投资组合管理，提升资产安全感。" data-en="Focusing on real-time monitoring and portfolio management for digital assets.">Web3 领域的交互与视觉尝试。</p>
+                <h2 class="lang" data-zh="Ethereum 相关设计" data-en="Ethereum Related Design">Ethereum Related Design</h2>
+                <p class="lang" data-zh="专注于数字资产的实时监控与投资组合管理。" data-en="Focusing on real-time monitoring and portfolio management for digital assets.">Focusing on real-time monitoring and portfolio management for digital assets.</p>
                 <div class="btn-group">
                     <a href="project-E/ethereum.pdf" target="_blank" class="btn">View PDF</a>
                 </div>
             </div>
         </div>
 
-<div class="card">
+        <div class="card">
             <img src="covers/asus.jpg" alt="ASUS Project">
             <div class="content">
                  <h2 class="lang" data-zh="ASUS - 品牌视觉海报" data-en="ASUS - Poster Design">ASUS - Poster Design</h2>
                 <p class="lang" 
-                   data-zh="结合华硕品牌基因进行的创意视觉表达，专注于排版与品牌传达。 " 
-                   data-en="Creative visual expression based on ASUS brand, focusing on typography and brand identity .">
-                   为华硕定制的界面设计方案。
+                   data-zh="结合华硕品牌基因进行的创意视觉表达，专注于排版与品牌传达。" 
+                   data-en="Creative visual expression based on ASUS brand identity, focusing on typography.">
+                   Creative visual expression based on ASUS brand identity, focusing on typography.
                 </p>
                 <div class="btn-group">
                     <a href="project-F/asus.pdf" target="_blank" class="btn">View PDF</a>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 
@@ -239,9 +238,15 @@ function changeLang(lang) {
     elements.forEach(el => {
         el.innerText = el.getAttribute('data-' + lang);
     });
+    // 更新本地存储
     localStorage.setItem('prefLang', lang);
 }
-window.onload = () => { changeLang(localStorage.getItem('prefLang') || 'zh'); };
+
+window.onload = () => { 
+    // 核心逻辑：获取存储的语言，如果没有存储过，默认使用 'en'
+    const savedLang = localStorage.getItem('prefLang') || 'en'; 
+    changeLang(savedLang); 
+};
 </script>
 
 </body>
