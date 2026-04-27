@@ -1,148 +1,183 @@
 <!DOCTYPE html>
-<html lang="en"> <head>
+<html lang="en"> 
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UI/UX Portfolio</title>
-    <style>
-        :root {
-            --primary: #0071e3;
-            --bg: #f5f5f7;
-            --text: #1d1d1f;
-            --card-shadow: 0 8px 30px rgba(0,0,0,0.04);
-            --card-hover: 0 15px 45px rgba(0,0,0,0.1);
-        }
+<style>
+    :root {
+        --primary: #0071e3;
+        --text: #1d1d1f;
+    }
 
-        body {
-            background: url('bg.jpg') no-repeat center center fixed; 
-            background-size: cover; 
-            font-family: 'SF Pro Display', -apple-system, sans-serif;
-            margin: 0;
-            padding: 80px 20px; /* 增加上下留白 */
-            min-height: 100vh;
-            color: var(--text);
-            line-height: 1.5;
-        }
-
-        .container {
-            max-width: 1200px; /* 稍微放宽容器 */
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.2); 
-            padding: 60px; /* 增加内部大间距 */
-            border-radius: 40px;
-            backdrop-filter: blur(15px); 
-            -webkit-backdrop-filter: blur(15px);
-        }
-
-        /* 语言切换按钮 - 调大尺寸 */
-        .lang-switch { 
-            text-align: right; 
-            margin-bottom: 60px; /* 增加与标题的间距 */
-        }
-        .lang-switch button {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0,0,0,0.1);
-            padding: 12px 28px; /* 增大按钮尺寸 */
-            font-size: 16px;    /* 增大字体 */
-            cursor: pointer;
-            border-radius: 30px;
-            margin-left: 12px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-        .lang-switch button:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 113, 227, 0.3);
-        }
-
-        header h1 {
-            font-size: 52px; /* 稍微加大标题 */
-            font-weight: 700;
-            letter-spacing: -1.5px;
-            margin-bottom: 80px; /* 增加标题和作品集的间距 */
-            text-align: center;
-            background: linear-gradient(90deg, #1d1d1f, #434343);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* 网格布局 - 增加卡片之间的间距 */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 50px; /* 增加卡片间距，不显得挤 */
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.7); 
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.4); 
-            border-radius: 30px; /* 更圆润 */
-            overflow: hidden;
-            transition: all 0.4s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-15px);
-            box-shadow: var(--card-hover);
-        }
-
-        .card img {
-            width: 100%;
-            height: 240px;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .content { 
-            padding: 35px; /* 增加文字区域的内边距 */
-        }
+    body {
+        /* 1. 核心：换成带有氛围感的苹果风渐变 */
+        background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 20%, #f1f3f5 100%);
+        background-attachment: fixed; /* 保持背景固定，滚动时更平滑 */
         
-        h2 { 
-            margin: 0 0 18px; 
-            font-size: 24px; 
-            font-weight: 600; 
-            line-height: 1.3;
-        }
+        font-family: 'SF Pro Display', -apple-system, sans-serif;
+        margin: 0;
+        padding: 40px 20px; 
+        min-height: 100vh;
+        color: var(--text);
+    }
 
-        p { 
-            color: #6e6e73; 
-            font-size: 16px; 
-            line-height: 1.8; /* 增加行高，阅读更舒适 */
-            margin-bottom: 30px; 
-            height: auto; /* 取消固定高度，让内容根据间距自然伸展 */
-            min-height: 60px;
-        }
+    /* 2. 可选微调：既然背景有了质感，可以让容器的玻璃感稍微重一点，更有层次感 */
+    .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.4); /* 调高透明度，从 0.2 升到 0.4 */
+        padding: 40px; 
+        border-radius: 40px;
+        backdrop-filter: blur(20px); 
+        -webkit-backdrop-filter: blur(20px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.02); /* 增加极淡的阴影，让它浮起来 */
+    }
 
-        .btn-group { display: flex; flex-wrap: wrap; gap: 15px; } /* 增加按钮之间的空隙 */
+    .lang-switch button {
+        /* 1. 关键：增加圆角，让它变回椭圆/胶囊形 */
+        border-radius: 20px; 
         
-        .btn {
-            display: inline-block;
-            padding: 12px 22px;
-            background: var(--primary);
-            color: white;
-            text-decoration: none;
-            border-radius: 14px;
-            font-size: 14px;
-            font-weight: 600;
-            transition: 0.3s;
-        }
+        /* 2. 质感：使用磨砂白背景 */
+        background: rgba(255, 255, 255, 0.6);
+        border: 1px solid rgba(0, 0, 0, 0.1);
         
-        .btn-v {
-            background: rgba(0,0,0,0.06);
-            color: var(--text);
-            border: 1px solid rgba(0,0,0,0.08);
-        }
+        /* 3. 间距和字体 */
+        padding: 8px 20px;
+        cursor: pointer;
+        margin-left: 8px;
+        font-weight: 500;
+        transition: all 0.3s ease; /* 确保变色动画丝滑 */
+    }
+
+    /* 4. 修复你之前提到的变蓝效果 */
+    .lang-switch button:hover {
+        background: var(--primary);
+        color: white;
+        border-color: var(--primary);
+    }
+
+    header h1 {
+        font-size: 32px; /* 增大字号，更有视觉重心 */
+        font-weight: 700;
+        text-align: center;
+        /* 增加上下边距，给标题更多“呼吸空间” */
+        margin: 60px 0 50px 0; 
         
-        .btn:hover { 
-            filter: brightness(1.1);
-            transform: scale(1.02);
-        }
-    </style>
+        /* 核心：文字渐变效果 */
+        background: linear-gradient(135deg, #1d1d1f 0%, #6e6e73 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        
+        /* 细节：紧缩字间距，这是提升 UI 高级感的关键技巧 */
+        letter-spacing: -1.5px;
+        
+        /* 增加极淡的阴影，让文字在背景上更立体 */
+        text-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    /* 关键：让卡片变小的网格设置 */
+    .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); /* 减小最小值，卡片自然变小 */
+        gap: 40px; 
+    }
+
+    .card {
+        background: rgba(255, 255, 255, 0.85); 
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 24px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        height: 100%; 
+        
+        /* 核心修改：增加柔和阴影 */
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); 
+        
+        transition: all 0.3s ease;
+    }
+
+    /* 悬停时让阴影变深，增加互动感 */
+    .card:hover { 
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    /* 图片 Fit 且高度适中 */
+    .card img {
+        width: 100%;
+        height: 160px; /* 减小图片高度，让卡片整体更秀气 */
+        object-fit: cover;
+    }
+
+    .content { 
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        flex: 1; /* 撑开内容区域 */
+    }
+    
+    h2 { 
+        margin: 0 0 10px; 
+        font-size: 18px; 
+        font-weight: 600; 
+        line-height: 1.3;
+    }
+
+    p { 
+        color: #6e6e73; 
+        font-size: 13px; 
+        line-height: 1.5; 
+        margin-bottom: 20px; 
+        flex: 1; /* 重点：即使文字只有一行，也会把按钮推到底部 */
+    }
+
+    .btn-group { 
+        display: flex; 
+        flex-wrap: wrap; 
+        gap: 8px; 
+        margin-top: auto; /* 强制按钮在最底部 */
+    } 
+    
+    /* 恢复你原本的按钮样式 */
+    .btn {
+        padding: 8px 16px;
+        background: var(--primary);
+        color: white;
+        text-decoration: none;
+        border-radius: 10px;
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    /* 默认状态：是你喜欢的浅灰色 */
+.btn-v {
+    background: rgba(0,0,0,0.05);
+    color: var(--text);
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+/* 悬停/点击状态：变回蓝色 */
+.btn-v:hover {
+    background: var(--primary); /* 这里的 primary 就是你定义的蓝色 #0071e3 */
+    color: white;               /* 文字变白，对比更清晰 */
+    border-color: var(--primary);
+    transform: translateY(-2px); /* 增加一点点击感 */
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 28px; /* 手机端自动变小 */
+        margin: 40px 0 30px 0;
+    }
+    .container {
+        padding: 20px; /* 手机端缩小内边距 */
+    }
+}
+</style>
 </head>
 <body>
 
@@ -153,12 +188,16 @@
     </div>
 
     <header>
-        <h1 class="lang" data-zh="KERWIN YONG UI/UX 设计作品集" data-en="KERWIN YONG UI/UX Design Portfolio">UI/UX Design Portfolio</h1>
+        <h1 class="lang" 
+            data-zh="杨勇健 | UI/UX 设计作品集" 
+            data-en="Yong Jian | UI/UX Portfolio">
+            Yong Jian | UI/UX Portfolio
+        </h1>
     </header>
 
     <div class="portfolio-grid">
         <div class="card">
-            <img src="covers/a.jpg" alt="Tian Fang Yu Ye">
+            <img src="covers/a.png" alt="Tian Fang Yu Ye">
             <div class="content">
                 <h2 class="lang" data-zh="天方御叶 - 奶茶应用设计页面" data-en="Tian Fang Yu Ye - Bubble Tea App Design">Tian Fang Yu Ye - App Design</h2>
                 <p class="lang" data-zh="包含从 V1 到 V3 的完整视觉演变过程。" data-en="Complete visual evolution from V1 to V3 showcasing design iterations.">Complete visual evolution from V1 to V3 showcasing design iterations.</p>
@@ -188,7 +227,7 @@
                 <h2 class="lang" data-zh="AVIA 项目" data-en="AVIA Project">AVIA Project</h2>
                 <p class="lang" data-zh="专注于高转化率的单页设计，涵盖响应式布局与极简交互。" data-en="High-conversion responsive design with minimalist interactions.">High-conversion responsive design with minimalist interactions.</p>
                 <div class="btn-group">
-                    <a href="project-C/avia.pdf" target="_blank" class="btn">View PDF</a>
+                    <a href="project-C/avia.pdf" target="_blank" class="btn btn-v">View PDF</a>
                 </div>
             </div>
         </div>
@@ -199,7 +238,7 @@
                 <h2 class="lang" data-zh="聊天软件 UI 设计" data-en="Chat App UI Design">Chat App UI Design</h2>
                 <p class="lang" data-zh="即时通讯工具的社交界面探索。" data-en="Social interface exploration for IM tools and mobile interactions.">Social interface exploration for IM tools and mobile interactions.</p>
                 <div class="btn-group">
-                    <a href="project-D/chat-app.pdf" target="_blank" class="btn">View PDF</a>
+                    <a href="project-D/chat-app.pdf" target="_blank" class="btn btn-v">View PDF</a>
                 </div>
             </div>
         </div>
@@ -210,7 +249,7 @@
                 <h2 class="lang" data-zh="Ethereum 相关设计" data-en="Ethereum Related Design">Ethereum Related Design</h2>
                 <p class="lang" data-zh="专注于数字资产的实时监控与投资组合管理。" data-en="Focusing on real-time monitoring and portfolio management for digital assets.">Focusing on real-time monitoring and portfolio management for digital assets.</p>
                 <div class="btn-group">
-                    <a href="project-E/ethereum.pdf" target="_blank" class="btn">View PDF</a>
+                    <a href="project-E/ethereum.pdf" target="_blank" class="btn btn-v">View PDF</a>
                 </div>
             </div>
         </div>
@@ -225,7 +264,7 @@
                    Creative visual expression based on ASUS brand identity, focusing on typography.
                 </p>
                 <div class="btn-group">
-                    <a href="project-F/asus.pdf" target="_blank" class="btn">View PDF</a>
+                    <a href="project-F/asus.pdf" target="_blank" class="btn btn-v">View PDF</a>
                 </div>
             </div>
         </div>
@@ -238,12 +277,10 @@ function changeLang(lang) {
     elements.forEach(el => {
         el.innerText = el.getAttribute('data-' + lang);
     });
-    // 更新本地存储
     localStorage.setItem('prefLang', lang);
 }
 
 window.onload = () => { 
-    // 核心逻辑：获取存储的语言，如果没有存储过，默认使用 'en'
     const savedLang = localStorage.getItem('prefLang') || 'en'; 
     changeLang(savedLang); 
 };
